@@ -1,0 +1,80 @@
+{
+  "settings-light-mode": "Temă Light",
+  "settings-dark-mode": "Temă Dark",
+
+  "scroll-bar-home": "ACASĂ",
+  "scroll-bar-ab-me": "DESPRE MINE",
+  "scroll-bar-projects": "PROIECTE",
+  "scroll-bar-socials": "REȚELE SOCIALE",
+
+  "global-socials-title": "REȚELE SOCIALE",
+
+  "info-box-greeting": "bună, eu sunt",
+  "info-box-role": "cel mai versatil programator",
+  "info-box-age": "am 17 ani",
+  "info-box-location": "acum trăiesc în România",
+  "info-box-exp": "jumate de deceniu în programare",
+  "info-box-goal": "mă axez pe versatilitate, o să termin orice proiect indiferent de tehnologie",
+  "info-box-specialization": "specializarea mea este C++ și Lua",
+
+  "info-box-socials-button": "INTRĂ ÎN CONTACT",
+  "info-box-cv-button": "DESCARCĂ CV",
+  "info-box-projects-button": "VEZI PROIECTE",
+
+  "section-1-scroll-down": "DĂ-I SCROLL",
+
+  "about-me-title": "ABOUT ME",
+  "about-me-description-top": "Am început să scriu cod când aveam 12 ani, prin jocurile de pe Roblox. Apoi am continuat cu C++ și dezvoltarea graficăm totodată explorând C# și alte tehnologii (ex. Arduino) și finalizând cu dezvoltarea Web Frontend și Backend simplu (un bot de Discord).",
+  "about-me-description-bottom": "Această călătorie nu a fost ușoară și clar nefinalizată, dar experiența mi-a arătat că pot să garatez că voi completa un proiect chiar și dacă este ambițios sau nu știu tehnologia, fiindcă pot să o învăț rapid.",
+
+  "section-2-lang-title": "LIMBI STRĂINE",
+  "section-2-eng-lang": "Engleza - Circa C2, nivel aproape nativ",
+  "section-2-ro-lang": "Româna - Limbajul meu nativ",
+  "section-2-es-lang": "Spaniola - C1, m-am născut + trăit aici 8 ani",
+
+  "tech-title": "TEHNOLOGII",
+  "tech-cpp-desc": "Am folosit C++ în managerul de bănci Omni Bank, și am încercat să construiesc multiple motoare grafice cu el.",
+  "tech-lua-desc": "Lua/Luau a fost punctul meu de început, de atunci am devenit foarte agil în funcțiile complexe ale limbajului.",
+  "tech-web-desc": "Am construit două pagini statice în Vanilla frontend (nelistate în acest portfolio pe cererea clienților).",
+  "tech-py-desc": "Am folosit Python pentru a construit un bot de Discord cu peste 20 de mii de linii de cod.",
+  "tech-vue-desc": "Acest portofoliu a fost primul proiect făcut de mine folosing Vue și Tailwind, pe care le voi folosi de acum încolo.",
+  "tech-flutter-desc": "Mă aflu în procesul de a studia Flutter, pe care îl voi folosi în competiții (în special) și proiecte personale.",
+
+  "projects-section-title": "PROIECTE",
+
+  "project-1-title": "INKED KNIGHT MISTERY",
+  "project-1-card-desc": "IKM este un joc pe Roblox, dezvoltat de mine solo în 3-4 luni. Este aproximativ 80% finalizat și va fi terminat până la sfârșitul anului.",
+  "project-1-modal-desc": "IKM este un joc Roblox la care am lucrat de unul singur timp de 3-4 luni. Se inspiră din MM2, Mafia (joc de rol), Flicker și Among Us, iar deși încă nelansat, este foarte aproape de finalizare și va fi gata până la sfârșitul anului.\n\nAcesta este cel mai ambițios proiect al meu de până acum, deoarece aproape totul a fost dezvoltat și implementat de mine cap-coadă, full-stack, incluzând (dar fără a se limita la): Design UI, programare, modelare 3D, animație, marketing, logo-uri și altele. Marea parte din el a fost realizat într-o singură vară.\n\nJocul este împărțit în două părți:\n• Lobby-ul (are magazin, inventar, deblocare skin-uri, progres battlepass etc.)\n• Zona de meci (conține logica meciului, pierdere, victorie, sistem de luptă etc.)\nLobby-ul și meciul partajează sisteme critice, de exemplu încărcarea skin-urilor, magazinul la 5 minute (poți cumpăra atât în meci, cât și în lobby), sistemul de luptă (poți testa skin-urile în lobby) și altele.\n\nGameplay-ul se bazează pe mecanici de rezolvare a misterelor combinate cu deducție socială. Pe parcursul dezvoltării am implementat, între altele:\n• Un magazin care se resetează la fiecare 5 minute și este sincronizat între servere.\n• Skin-uri și deblocare de skin-uri + sistem de Battlepass.\n• Sistem de inventar custom, ecran de încărcare custom, clasament / listă de jucători custom etc.\n• Clasamente globale și urmărirea statisticilor jucătorilor.\n• Sistem de luptă (blocare, stamină, atac, ghemuire).\n• Un handler complet de meci (task-uri, managementul jucătorilor, gestionarea identității, sistem de vot, sistem de indicii, ascunderea corpurilor etc.).\n• Optimizare puternică a jocului, cu tehnici precum: serializare, design inteligent al sistemelor (pentru a evita replicarea inutilă), design orientat pe date etc.\n• Boost-uri pentru joc cu prietenii, economie completă, opțiuni de achiziție cu Robux și monede pentru orice produs.\n• Ierarhie custom pentru cod, împărțit în \"Handlers\" pentru a evita un framework, păstrând totodată modularitatea.\n• Am folosit semnale pentru comunicarea între sisteme în locul apelurilor directe, pentru a evita dependențele circulare.\n• Suport planificat pentru toate platformele (inclusiv VR).\netc.\n\nTehnologii principale folosite:\n• Fusion (bibliotecă UI; am folosit și React la proiecte anterioare, dar l-am abandonat)\n• Signal\n• Lyra\n• Janitor\n• Promise\n• Rojo (am folosit Visual Studio Code ca IDE pentru acest proiect, îl consider mai versatil decât editorul de scripturi Roblox)\n\nProvocări:\n    • Am implementat o verificare bazată pe timpul serverului, pentru ca toate serverele să aleagă aceleași articole în magazin.\n    • Am echilibrat performanța limitând atent replicarea și structurând datele pentru o comunicare server-client eficientă.\n    • Am proiectat o bază de cod modulară pentru a susține extinderi viitoare fără a depinde de framework-uri greoaie.\n\nIKM m-a învățat să gestionez cap-coadă ciclul de viață al unui joc multiplayer, de la design de sistem până la optimizare și testare. M-a împins să rezolv probleme complexe de sincronizare și să proiectez o arhitectură scalabilă, dezvoltând în același timp abilități transferabile în design UI, ingineria sistemelor de gameplay și echilibrarea economiei.\n\nO mică mulțumire testerilor pentru feedback și pentru ajutorul lor în rafinarea jocului.",
+
+  "project-2-title": "BOT-UL HOOTY PENTRU DISCORD",
+  "project-2-card-desc": "Bot-ul Hooty este un bot Discord de ~20k LOC, scris în Python, folosind Discord.py. A fost creat ca înlocuitor pentru majoritatea bot-urilor mari pe care le foloseam pe serverul meu.",
+  "project-2-modal-desc": "Bot-ul Hooty este gândit să fie instalat o singură dată și păstrat într-un singur server; nu l-am proiectat cu suport pentru mai multe servere de Discord. Are majoritatea funcțiilor pe care le au MEE6, Dyno, Card-bot și alții. Este destinat implementării prin Docker, iar în prezent găzduiesc două instanțe: una pentru server-ul meu Realm Roundtable (server de fani The Owl House, unde a debutat botul) și cealaltă pentru serverul jocului IKM. Am folosit Visual Studio Code ca editor principal pentru a dezvolta acest bot.\n\n    Funcționalități principale:\n    • Sistem de nivelare custom – urmărire XP și progres pentru implicarea pe server.\n    • Instrumente de moderare – avertismente, loguri, kick-uri, ban-uri, mute-uri, cu evidențe persistente.\n    • Roluri prin reacții – alocare flexibilă de roluri declanșată de emoji-uri.\n    • Sistem de economie – monedă în server cu recompense și achiziții.\n    • Recompense pentru Boosteri – beneficii pentru cei ce susțin comunitatea.\n    • Giveaway-uri și evenimente – administrare automată a giveaway-urilor.\n    • Memento-uri de bump – asigură vizibilitate pentru creșterea serverului.\n    etc.\n\n    Pentru lista completă de funcții, vezi repo-ul de pe GitHub.\n\n    Provocări:\n    • Am proiectat un handler modular de comenzi pentru a menține proiectul ușor de întreținut pe măsură ce crește.\n    • Am implementat logging structurat și tratare a erorilor pentru a asigura uptime.\n    • Am gestionat eficient task-urile asincrone și limitele de rată ale API-ului Discord.\n    • Am învățat containerizarea cu Docker și implementări automate prin Proxmox.\n\n    Ce am învățat:\n    • Experiență practică în structurarea proiectelor Python într-o bază de cod mare.\n    • Am îmbunătățit lucrul cu discord.py și programarea async.\n    • Containerizare și implementare folosind Docker.\n    • Administrare server cu Ubuntu + Proxmox.\n    • Practici DevOps pentru rularea mai multor instanțe live.\n\n    Per total, Hooty a fost un proiect care mi-a dezvoltat abilitățile în Python și mi-a crescut experiența în administrarea serverelor, securitate și bune practici în dezvoltarea aplicațiilor DevOps.",
+
+  "project-3-title": "OMNI BANK DATABASE MANAGER",
+  "project-3-card-desc": "Omni Bank DB Manager este o aplicație desktop C++ dezvoltată în framework-ul Walnut de la TheCherno. Bazele de date sunt stocate într-un fișier .txt local, plus un mod doar CMD.",
+  "project-3-modal-desc": "Omni Bank DB Manager este un proiect C++ atribuit inițial de școală ca o aplicație simplă în linie de comandă. L-am extins mult peste cerințe, adăugând:\n      • O interfață grafică completă folosind Dear ImGui și framework-ul Walnut al lui TheCherno.\n      • Suport multilingv (engleză și română).\n      • Sistem dual: GUI implicit, cu fallback pe linie de comandă prin argumentul -noui.\n\n       Proiectul este explicat pe larg în repository-ul de pe GitHub, atât în engleză, cât și în română. Baza de date este un fișier .txt local și este citită/scrisă la pornire, salvare și închidere. Am folosit Visual Studio 2022 ca IDE.\n      Funcționalități principale:\n      • Moduri de interfață UI și CMD\n      • Suport pentru mai multe limbi (engleză + română)\n      • Salvare/citire automată în/din baza de date\n      • Suport pentru baze de date multiple\n\n       Ce am învățat:\n        • Utilizare eficientă a ImGui pentru UI în aplicații reale.\n        • Aplicarea framework-ului Walnut pentru a eficientiza dezvoltarea în C++.\n        • Implementarea suportului multilingv într-o aplicație C++.\n        • Proiectarea și livrarea unui proiect software C++ complet, orientat către utilizator.\n\n        Provocări:\n        • Am lucrat cu funcționalități STL mai complexe, precum smart pointers, pentru a evita scurgerile de memorie.\n        • Am implementat suportul multilingv printr-un sistem flexibil de resurse text, ușor de extins.\n        • Am asigurat consistența datelor la citirea/scrierea în fișiere .txt, gestionând cazuri-limită precum opriri neașteptate sau date malformate.\n        • Am echilibrat funcționarea în mod dual (GUI și CLI) fără a duplica logica, abstractând funcționalitatea de bază de stratul de interfață.\n        • Am învățat să integrez și să adaptez Walnut + ImGui într-un proiect non‑joc, depășind lipsuri de documentație și aplicând tehnici din game dev la software desktop.\n\n        Acest proiect a fost un bun pas înainte în drumul meu cu C++: m-a învățat să depășesc cerințele temei, să echilibrez uzabilitatea cu performanța și să fac alegeri tehnologice deliberate. Deși aici am ales ImGui + Walnut, sunt deschis și capabil să învăț framework-uri precum Qt pentru proiecte viitoare.",
+
+  "project-4-title": "THIS PORTFOLIO",
+  "project-4-card-desc": "Acest portofoliu este primul meu proiect cu Vue.js și TailwindCSS, dezvoltat în aproximativ o săptămână.",
+  "project-4-modal-desc": "Vue.js este framework-ul meu preferat pentru dezvoltare web datorită simplității, performanței și experienței pentru dezvoltatori (nu înseamnă că nu pot învăța altele, dar acesta e framework-ul meu preferat). Am învățat Vue.js și Tailwind CSS în mai puțin de o săptămână lucrând chiar la acest proiect. Din cauza timpului limitat nu am urmărit cursuri; am intrat direct, practic, fără experiență cu aceste framework-uri.\n\n    Înainte de acest portofoliu, am construit două pagini statice în CSS, JS și HTML vanilla, folosind doar swiper.js pentru slidere:\n• O pagină de prezentare pentru un proiect de fani The Owl House, la care sunt co-creator (încă nelansat).\n• Un site portofoliu profesional pentru un electrician (privat, la cererea clientului).\nDeși nelansate, aceste proiecte m-au ajutat să mă familiarizez rapid cu frontend-ul vanilla și au fost pașii care m-au dus să învăț Vue și Tailwind.\n\nAm realizat acest portofoliu pentru a mă promova și pentru Hackathonul 2025 din orașul meu; IDE-ul ales a fost WebStorm (preferatul meu), dar am folosit și Visual Studio Code pentru scurt timp când lucram la celelalte site-uri statice menționate.\n\nFuncționalități:\n• Suport multilingv fără a duplica versiunile site-ului\n• Comutator temă light/dark pentru accesibilitate și preferințe\n• Sistem de icoane personalizat cu gestionare dinamică a culorilor și efectelor (SVG + soluții CSS)\n• Optimizări de performanță pentru site-uri cu efecte vizuale intense\n\nProvocări și soluții:\n• Am integrat cod third-party complex (efectele vue.bits) într-un proiect custom.\n• Am depășit probleme de accesibilitate oferind comutare de limbă și de temă.\n• Am învățat să optimizez animațiile grele pentru rulare fluentă pe toate dispozitivele.\n\nCe am învățat:\n• Adoptare rapidă a Vue.js și Tailwind CSS pentru dezvoltare web gata de producție.\n• Construirea de pagini de prezentare scalabile, accesibile și responsive.\n• Aplicarea eficientă a autoînvățării sub presiunea timpului.\n• Integrarea AI ca instrument de suport pentru clarificarea conceptelor și accelerarea implementării.\n\nAcest proiect a fost un pas esențial în parcursul meu în web development: prima, dar cu siguranță nu ultima, interacțiune cu framework-uri și biblioteci pentru aplicații complete. M-am îndrăgostit și mai mult de Vue și îl voi folosi în majoritatea proiectelor pe viitor.",
+
+  "project-modal-socials": "Link-uri și rețele sociale",
+
+  "section-4-education-title": "EDUCAȚIE",
+  "section-4-education-text": "Liceu (Ultimul an) - Specializare mate-info \n \n Doresc să merg mai departe la facultatea de automatică pe calculatoare limba engleză. \n \n Studii independetente (cursuri pe Udemy):",
+  "section-4-education-l1": "Learn C++ de Abdul Bari",
+  "section-4-education-l2": "DSA in C++ de Abdul Bari",
+  "section-4-education-l3": "Flutter & Dart de Maximilian Schwarzmüller",
+
+  "section-4-dp-title": "DIPLOME",
+
+  "section-4-dp-1-title": "Olimpiada de informatică",
+  "section-4-dp-1-desc": "Am participat la olimpiada de informatică, etapa județeană (clasele 9, 10 și 11) și am reușit să intru în top 10 pe județ, la categoria pentru nivelul clasei mele.",
+  "section-4-dp-2-title": "ITEC",
+  "section-4-dp-2-desc": "Am participat în competiția de programare ITEC, la categoria de algoritmică, făcând concurență cu studenți și alți versați în programare.",
+  "section-4-dp-3-title": "Nextlab",
+  "section-4-dp-3-desc": "Am participat la prima fază a competiției de robotică neXtlab și am câștigat un kit de robot ca și premiu.",
+  "section-4-dp-4-title": "CPPI",
+  "section-4-dp-4-desc": "Am fost un student la Centrul de Pregătire Pentru Performanță în Informatică pentru 3 ani de zile, unde am studiat algoritmică"
+
+}
