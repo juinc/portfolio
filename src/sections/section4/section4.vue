@@ -178,7 +178,7 @@ onBeforeUnmount(() => {
               >
                 <span
                     class="absolute -top-2.5 left-5 bg-[color-mix(in_oklch,_var(--bg)_20%,_transparent)] px-2
-                         font-bg-rubik font-bold text-xs sm:text-sm text-(--text-muted) z-100 uppercase"
+                         font-bg-rubik font-bold text-xs sm:text-sm text-(--text-muted) z-100 uppercase" style="font-weight: bold;"
                 >
                   {{ key }}
                 </span>
