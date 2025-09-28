@@ -7,6 +7,9 @@
 
   import ikm1 from '@/assets/img/ikm/1.png';
   import ikm2 from '@/assets/img/ikm/2.png';
+  import ikm3 from '@/assets/img/ikm/3.png';
+  import ikm4 from '@/assets/img/ikm/4.png';
+  import ikm5 from '@/assets/img/ikm/5.png';
 
   import bot1 from '@/assets/img/bot/1.png';
   import bot2 from '@/assets/img/bot/2.png';
@@ -15,9 +18,17 @@
 
   import odb1 from '@/assets/img/odb/1.png';
   import odb2 from '@/assets/img/odb/2.png';
+  import odb3 from '@/assets/img/odb/3.png';
+  import odb4 from '@/assets/img/odb/4.png';
+  import odb5 from '@/assets/img/odb/5.png';
+  import odb6 from '@/assets/img/odb/6.png';
+  import odb7 from '@/assets/img/odb/7.png';
+  import odb8 from '@/assets/img/odb/8.png';
+  import odb9 from '@/assets/img/odb/9.png';
 
   import prt1 from '@/assets/img/prt/1.png';
   import prt2 from '@/assets/img/prt/2.png';
+  import prt3 from '@/assets/img/prt/3.png';
 
   const projects = computed(() => [
     {
@@ -30,7 +41,10 @@
       ],
       modalImages: [
         ikm1,
-        ikm2
+        ikm2,
+        ikm3,
+        ikm4,
+        ikm5
       ],
       technologies: ['Roblox', 'Luau', 'Fusion', 'Adb Illustrator', 'Blender', 'Lunacy', 'Rojo'],
       socials: [
@@ -65,7 +79,14 @@
       ],
       modalImages: [
         odb1,
-        odb2
+        odb2,
+        odb3,
+        odb4,
+        odb5,
+        odb6,
+        odb7,
+        odb8,
+        odb9
       ],
       technologies: ['C++', 'imgui', 'Vulkan', 'Walnut', 'Desktop'],
       socials: [{ name: 'GitHub', url: 'https://github.com/juinc/Bank-DB-Project' }]
@@ -80,7 +101,8 @@
       ],
       modalImages: [
         prt1,
-        prt2
+        prt2,
+        prt3
       ],
       technologies: ['Vue.js', 'TailwindCSS', 'i18n', 'Github Pages', 'Swiper.js'],
       socials: [{ name: 'GitHub', url: 'https://juinc.github.io/portfolio/' }]

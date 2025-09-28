@@ -5,6 +5,9 @@
   import 'swiper/css'
   import ProjectModal from '@/sections/section3/components/projectModal.vue'
   import { useIcons } from '@/shared/composables/icons.js'
+  import { useI18n } from 'vue-i18n'
+
+  const { t } = useI18n()
 
   const props = defineProps({
     title: { type: String, required: true },
@@ -215,7 +218,7 @@
           ></div>
         </div>
 
-        <span class="relative z-10 cursor-pointer">View More</span>
+        <span class="relative z-10 cursor-pointer">{{ t('projects-card-view-more') }}</span>
 
         <svg
             class="relative z-10 w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1"
