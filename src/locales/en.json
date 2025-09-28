@@ -21,6 +21,10 @@
   "info-box-cv-button": "DOWNLOAD CV",
   "info-box-projects-button": "VIEW PROJECTS",
 
+  "cv-modal-title": "DOWNLOAD CV",
+  "cv-modal-subtitle": "Select the language you want to download the CV in:",
+  "cv-modal-footer": "Hope to hear from you soon!",
+
   "section-1-scroll-down": "SCROLL DOWN",
 
   "about-me-title": "ABOUT ME",

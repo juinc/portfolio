@@ -1,96 +1,93 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { useI18n } from 'vue-i18n'
-import CardBackground from '@/sections/section1/components/cardBackground.vue'
-import AnimatedButton from '@/sections/section1/components/animatedButton.vue'
-import SocialsModal from '@/topbar/socials/socialsModal.vue'
-import { faLocationDot, faUser, faBriefcase, faBullseye, faLaptop } from '@fortawesome/free-solid-svg-icons'
-import { useProfileData } from '@/shared/composables/profileData.js'
+  import { ref, onMounted, onBeforeUnmount } from 'vue'
+  import { useI18n } from 'vue-i18n'
+  import CardBackground from '@/sections/section1/components/cardBackground.vue'
+  import AnimatedButton from '@/sections/section1/components/animatedButton.vue'
+  import SocialsModal from '@/topbar/socials/socialsModal.vue'
+  import CVModal from '@/sections/section1/components/CVModal.vue'
+  import { faLocationDot, faUser, faBriefcase, faBullseye, faLaptop } from '@fortawesome/free-solid-svg-icons'
+  import { useProfileData } from '@/shared/composables/profileData.js'
 
-const { t } = useI18n()
+  const { t } = useI18n()
 
-const {
-  isSpinning,
-  isImageHovered,
-  displayedName,
-  displayedHandle,
-  showNameCursor,
-  showHandleCursor,
-  isTypingName,
-  isTypingHandle,
-  currentProfile,
-  currentFont,
-  currentTextSize,
-  gradientStyle,
-  imageGlowStyle,
-  buttonScaleStyle,
-  switchProfile,
-  setImageHovered,
-  initializeTypewriter,
-  cleanup
-} = useProfileData()
+  const {
+    isSpinning,
+    isImageHovered,
+    displayedName,
+    displayedHandle,
+    showNameCursor,
+    showHandleCursor,
+    isTypingName,
+    isTypingHandle,
+    currentProfile,
+    currentFont,
+    currentTextSize,
+    gradientStyle,
+    imageGlowStyle,
+    buttonScaleStyle,
+    switchProfile,
+    setImageHovered,
+    initializeTypewriter,
+    cleanup
+  } = useProfileData()
 
-const isSocialsModalOpen = ref(false)
-const openSocialsModal = () => { isSocialsModalOpen.value = true }
-const closeSocialsModal = () => { isSocialsModalOpen.value = false }
+  const isSocialsModalOpen = ref(false)
+  const isCVModalOpen = ref(false)
 
-const downloadCV = () => {
-  const link = document.createElement('a')
-  link.href = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
-  link.download = 'CV.pdf'
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
-}
+  const openSocialsModal = () => { isSocialsModalOpen.value = true }
+  const closeSocialsModal = () => { isSocialsModalOpen.value = false }
 
-const scrollToProjects = () => {
-  let targetElement = document.getElementById('section-3')
-  if (!targetElement) {
-    targetElement =
-        document.querySelector('[class*="Section3"]') ||
-        document.querySelector('.section-3') ||
-        document.querySelector('[data-section="3"]')
-  }
-  if (!targetElement) {
-    const allSections = document.querySelectorAll('section, [class*="Section"], div[class*="section"]')
-    targetElement = allSections[1]
-  }
-  if (targetElement) {
-    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+  const openCVModal = () => { isCVModalOpen.value = true }
+  const closeCVModal = () => { isCVModalOpen.value = false }
+
+  const scrollToProjects = () => {
+    let targetElement = document.getElementById('section-3')
+    if (!targetElement) {
+      targetElement =
+          document.querySelector('[class*="Section3"]') ||
+          document.querySelector('.section-3') ||
+          document.querySelector('[data-section="3"]')
+    }
+    if (!targetElement) {
+      const allSections = document.querySelectorAll('section, [class*="Section"], div[class*="section"]')
+      targetElement = allSections[1]
+    }
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+      setTimeout(() => {
+        const elementTop = targetElement.getBoundingClientRect().top + window.scrollY
+        window.scrollTo({ top: elementTop, behavior: 'smooth' })
+      }, 100)
+    } else {
+      const fallbackPosition = document.documentElement.scrollHeight * 0.25
+      window.scrollTo({ top: fallbackPosition, behavior: 'smooth' })
+    }
     setTimeout(() => {
-      const elementTop = targetElement.getBoundingClientRect().top + window.scrollY
-      window.scrollTo({ top: elementTop, behavior: 'smooth' })
-    }, 100)
-  } else {
-    const fallbackPosition = document.documentElement.scrollHeight * 0.25
-    window.scrollTo({ top: fallbackPosition, behavior: 'smooth' })
+      const customScrollEvent = new CustomEvent('scrollToSection', { detail: { sectionIndex: 1, sectionId: 'section-2' } })
+      window.dispatchEvent(customScrollEvent)
+    }, 200)
   }
-  setTimeout(() => {
-    const customScrollEvent = new CustomEvent('scrollToSection', { detail: { sectionIndex: 1, sectionId: 'section-2' } })
-    window.dispatchEvent(customScrollEvent)
-  }, 200)
-}
 
-const items = [
-  {
-    image: '',
-    title: '',
-    subtitle: '',
-    handle: '',
-    borderColor: '#dcdcdc',
-    gradient:
-        'linear-gradient(145deg, color-mix(in oklch, var(--bg-light) 80%, transparent), color-mix(in oklch, var(--bg) 80%, transparent))',
-    url: ''
-  }
-]
+  const items = [
+    {
+      image: '',
+      title: '',
+      subtitle: '',
+      handle: '',
+      borderColor: '#dcdcdc',
+      gradient:
+          'linear-gradient(145deg, color-mix(in oklch, var(--bg-light) 80%, transparent), color-mix(in oklch, var(--bg) 80%, transparent))',
+      url: ''
+    }
+  ]
 
-onMounted(() => {
-  initializeTypewriter()
-})
+  onMounted(() => {
+    initializeTypewriter()
+  })
 
-onBeforeUnmount(() => {
-  cleanup()
-})
+  onBeforeUnmount(() => {
+    cleanup()
+  })
 </script>
 
 <template>
@@ -259,12 +256,12 @@ onBeforeUnmount(() => {
                   variant="hybrid"
                   :text="t('info-box-cv-button')"
                   icon="documentFilled"
-                  success-text="DOWNLOADED"
+                  success-text="SELECT LANGUAGE"
                   :gradient-from="currentProfile.gradientFromOklch"
                   :gradient-to="currentProfile.gradientToOklch"
                   :border-color="currentProfile.borderColor"
                   :hover-border-color="currentProfile.borderColor"
-                  :click="downloadCV"
+                  :click="openCVModal"
               />
               <AnimatedButton
                   variant="empty"
@@ -283,6 +280,13 @@ onBeforeUnmount(() => {
       </div>
 
       <SocialsModal :is-open="isSocialsModalOpen" @close="closeSocialsModal" />
+      <CVModal
+          :is-open="isCVModalOpen"
+          @close="closeCVModal"
+          :gradient-from="currentProfile.gradientFromOklch"
+          :gradient-to="currentProfile.gradientToOklch"
+          :border-color="currentProfile.borderColor"
+      />
     </CardBackground>
   </div>
 </template>
