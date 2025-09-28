@@ -5,7 +5,14 @@ import TailwindLogo from '@/assets/icons/tech/tailwind.svg'
 import JavascriptLogo from '@/assets/icons/tech/js.svg'
 import PythonLogo from '@/assets/icons/tech/python.svg'
 import LuaLogo from '@/assets/icons/tech/lua.svg'
-import cppLogo from '@/assets/icons/tech/cpp.svg'
+import cppLogo from '@/assets/icons/tech/cppFilled.svg'
+import blenderLogo from '@/assets/icons/tech/blender.svg'
+import dockerLogo from '@/assets/icons/tech/docker.svg'
+import fusionLogo from '@/assets/icons/tech/fusion.svg'
+import linuxLogo from '@/assets/icons/tech/linux.svg'
+import proxmoxLogo from '@/assets/icons/tech/proxmox.svg'
+import swiperLogo from '@/assets/icons/tech/swiper.svg'
+import vulkanLogo from '@/assets/icons/tech/vulkan.svg'
 
 import GithubIcon from '@/assets/icons/socials/githubFilled.svg'
 import LinkedinIcon from '@/assets/icons/socials/linkedin.svg'
@@ -22,8 +29,16 @@ const iconRegistry = {
         'python': markRaw(PythonLogo),
         'luau': markRaw(LuaLogo),
         'lua': markRaw(LuaLogo),
-        'Discord.py': markRaw(PythonLogo),
-        'C++': markRaw(cppLogo),
+        'discord.py': markRaw(PythonLogo),
+        'c++': markRaw(cppLogo),
+        'swiper.js' : markRaw(swiperLogo),
+        'blender': markRaw(blenderLogo),
+        'docker': markRaw(dockerLogo),
+        'fusion': markRaw(fusionLogo),
+        'linux': markRaw(linuxLogo),
+        'proxmox': markRaw(proxmoxLogo),
+        'vulkan': markRaw(vulkanLogo),
+        'linux servers': markRaw(linuxLogo),
     },
 
     social: {

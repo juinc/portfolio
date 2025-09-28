@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+  import { ref, computed, onMounted, onBeforeUnmount, nextTick, watch } from 'vue'
   import { Swiper, SwiperSlide } from 'swiper/vue'
   import { Autoplay } from 'swiper/modules'
   import 'swiper/css'
@@ -14,8 +14,8 @@
     socials: { type: Array, default: () => [] },
     modalDescription: { type: String, default: '' },
     modalImages: { type: Array, default: () => [] },
-    revealDirection: { type: String, default: 'left' }, // 'left' | 'right' | 'up' | 'down'
-    revealDelay: { type: Number, default: 0 } // ms
+    revealDirection: { type: String, default: 'left' },
+    revealDelay: { type: Number, default: 0 }
   })
 
   const modules = [Autoplay]
@@ -47,13 +47,15 @@
         return
       }
       observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            visible.value = true
-            if (once && observer) observer.unobserve(entry.target)
-          } else if (!once) {
-            visible.value = false
-          }
+        requestAnimationFrame(() => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              visible.value = true
+              if (once && observer) observer.unobserve(entry.target)
+            } else if (!once) {
+              visible.value = false
+            }
+          })
         })
       }, { threshold, rootMargin })
       observer.observe(el.value)
@@ -72,7 +74,7 @@
   const { el: cardRef, visible: inView } = useReveal({ threshold: 0.2 })
 
   function revealClasses(isVisible, direction = 'left') {
-    const base = 'transform-gpu transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none'
+    const base = 'transform-gpu transition-all duration-700 ease-out will-change-[opacity,transform] motion-reduce:transition-none motion-reduce:transform-none'
     const hiddenTranslate = {
       left: '-translate-x-8',
       right: 'translate-x-8',
@@ -87,7 +89,7 @@
 
   function blurClasses(isVisible) {
     return [
-      'transition-all duration-700 ease-out motion-reduce:transition-none',
+      'transition-[backdrop-filter] duration-700 ease-out',
       isVisible ? 'backdrop-blur-[20px]' : 'backdrop-blur-none'
     ].join(' ')
   }
@@ -95,8 +97,9 @@
   const gradientBeforeBase = [
     'relative isolate',
     "before:content-[''] before:absolute before:inset-0 before:rounded-2xl",
-    'before:pointer-events-none before:transition-opacity before:duration-700 before:ease-out',
+    'before:pointer-events-none before:transition-opacity before:transition-[backdrop-filter] before:duration-700 before:ease-out',
     'before:bg-[linear-gradient(to_bottom,_color-mix(in_oklch,_var(--bg-light)_25%,_transparent),_color-mix(in_oklch,_var(--bg)_15%,_transparent))]',
+    'before:backdrop-blur-lg',
     'before:-z-10'
   ].join(' ')
 
@@ -112,10 +115,10 @@
       gradientBeforeBase,
       gradientBeforeVisibility(inView),
       blurClasses(inView),
-      'rounded-2xl shadow-xl',
+      'card-container rounded-2xl shadow-xl',
       'dark:border-r dark:border-b dark:border-l dark:border-(--border-muted)',
       'border-t-[2px] dark:border-t-[1.5px] border-t-(--highlight) dark:border-t-(--highlight)',
-      'flex flex-col px-4 sm:px-6 lg:px-8 py-4 sm:py-5 lg:py-6 items-center',
+      'flex flex-col px-4 sm:px-6 lg:px-8 py-4 sm:py-5 lg:py-6 items-center backdrop-blur-sm',
       revealClasses(inView, revealDirection)
     ]"
       :style="{ transitionDelay: `${revealDelay}ms` }"
@@ -130,6 +133,7 @@
             :src="image"
             :alt="`${title} image ${index + 1}`"
             class="w-full h-auto max-h-32 sm:max-h-32 lg:max-h-32 object-cover rounded-lg"
+            loading="lazy"
         />
       </div>
     </div>
@@ -141,6 +145,7 @@
     <div class="w-full mb-4 sm:mb-5">
       <Swiper
           :modules="modules"
+          :grab-cursor="true"
           :slides-per-view="2"
           :breakpoints="{ 640: { slidesPerView: 3 }, 1024: { slidesPerView: 4 } }"
           :space-between="8"
@@ -261,6 +266,12 @@
 </template>
 
 <style scoped>
+  .card-container {
+    contain: layout style;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
   @keyframes pulse-outline {
     0%, 100% { opacity: 100; }
     50% { opacity: 60; }

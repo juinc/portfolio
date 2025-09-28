@@ -52,7 +52,7 @@
         bot3,
         bot4
       ],
-      technologies: ['Python', 'Discord.py', 'Discord', 'Docker', 'Proxmox', 'Linux', 'Linux servers'],
+      technologies: ['Python', 'Discord.py', 'Docker', 'Proxmox', 'Linux', 'Linux servers'],
       socials: [{ name: 'GitHub', url: 'https://github.com/juinc/Hooty-Bot' }]
     },
     {
@@ -87,26 +87,55 @@
     }
   ])
 
+  const observerCache = new WeakMap()
+
   function useReveal({ threshold = 0.2, rootMargin = '0px 0px -10% 0px', once = true } = {}) {
     const el = ref(null)
     const visible = ref(false)
-    let observer
+    let observer = null
+    let rafId = null
 
     const start = () => {
       if (!el.value || typeof window === 'undefined' || !('IntersectionObserver' in window)) {
         visible.value = true
         return
       }
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            visible.value = true
-            if (once && observer) observer.unobserve(entry.target)
-          } else if (!once) {
-            visible.value = false
+
+      const options = { threshold, rootMargin }
+      const key = JSON.stringify(options)
+
+      if (!observerCache.has(window)) {
+        observerCache.set(window, {})
+      }
+
+      const cache = observerCache.get(window)
+
+      if (!cache[key]) {
+        cache[key] = new IntersectionObserver((entries) => {
+          if (rafId) cancelAnimationFrame(rafId)
+          rafId = requestAnimationFrame(() => {
+            entries.forEach((entry) => {
+              const callback = entry.target._revealCallback
+              if (callback) callback(entry)
+            })
+          })
+        }, options)
+      }
+
+      observer = cache[key]
+
+      el.value._revealCallback = (entry) => {
+        if (entry.isIntersecting) {
+          visible.value = true
+          if (once) {
+            observer.unobserve(entry.target)
+            delete entry.target._revealCallback
           }
-        })
-      }, { threshold, rootMargin })
+        } else if (!once) {
+          visible.value = false
+        }
+      }
+
       observer.observe(el.value)
     }
 
@@ -114,40 +143,64 @@
       await nextTick()
       start()
     })
+
     onBeforeUnmount(() => {
-      if (observer) observer.disconnect()
+      if (rafId) cancelAnimationFrame(rafId)
+      if (observer && el.value) {
+        observer.unobserve(el.value)
+        delete el.value._revealCallback
+      }
     })
+
     return { el, visible }
   }
 
   function revealClasses(isVisible, direction = 'left') {
-    const base = 'transform-gpu transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none'
+    const base = 'transform-gpu transition-opacity transition-transform duration-700 ease-out will-change-transform motion-reduce:transition-none motion-reduce:transform-none'
     const hiddenTranslate = {
-      left: '-translate-x-8',
-      right: 'translate-x-8',
-      up: '-translate-y-8',
-      down: 'translate-y-8'
-    }[direction] || 'translate-y-8'
+      left: 'translate3d(-2rem, 0, 0)',
+      right: 'translate3d(2rem, 0, 0)',
+      up: 'translate3d(0, -2rem, 0)',
+      down: 'translate3d(0, 2rem, 0)'
+    }[direction] || 'translate3d(0, 2rem, 0)'
     return [
       base,
-      isVisible ? 'opacity-100 translate-x-0 translate-y-0' : `opacity-0 ${hiddenTranslate} motion-reduce:opacity-100`
+      isVisible ? 'opacity-100 translate3d-0' : `opacity-0 ${hiddenTranslate} motion-reduce:opacity-100`
     ].join(' ')
   }
 
   const { el: titleRef, visible: titleVisible } = useReveal({ threshold: 0.2 })
   const { el: gridRef, visible: gridVisible } = useReveal({ threshold: 0.15 })
+
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+  }
+
+  onMounted(() => {
+    setVh()
+    window.addEventListener('resize', setVh)
+    window.addEventListener('orientationchange', setVh)
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', setVh)
+  })
+
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', setVh)
+    window.removeEventListener('orientationchange', setVh)
+    if (window.visualViewport) window.visualViewport.removeEventListener('resize', setVh)
+  })
 </script>
 
 <template>
   <section
       id="section-3"
-      class="relative py-8 lg:py-0 lg:h-screen lg:flex lg:items-center lg:justify-center"
+      class="relative py-8 lg:py-0 lg:h-screen lg:flex lg:items-center lg:justify-center min-h-[calc(var(--vh,1vh)*100)] lg:min-h-0 max-h-none lg:max-h-[1000px] overflow-visible lg:overflow-hidden"
   >
     <div
         class="w-[90vw] sm:w-[90vw] md:w-[90vw] lg:w-[90vw] xl:w-[90vw] 2xl:w-[70vw]
              mx-auto lg:mx-0 lg:absolute lg:top-[50%] lg:left-[50%]
              lg:translate-x-[-50%] lg:translate-y-[-50%] z-10 flex flex-col
-             lg:h-[98vh]"
+             lg:h-[98vh] h-auto overflow-visible lg:overflow-hidden max-h-none lg:max-h-[1000px]"
     >
       <p
           ref="titleRef"
@@ -178,3 +231,9 @@
     </div>
   </section>
 </template>
+
+<style scoped>
+.translate3d-0 {
+  transform: translate3d(0, 0, 0);
+}
+</style>
