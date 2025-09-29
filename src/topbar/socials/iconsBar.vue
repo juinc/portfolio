@@ -16,6 +16,18 @@
   const closeModal = () => {
     isModalOpen.value = false
   }
+
+  const openGithub = () => {
+    window.open('https://github.com/juinc', '_blank')
+  }
+
+  const openLeetCode = () => {
+    window.open('https://leetcode.com/u/juinc/', '_blank')
+  }
+
+  const openLinkedIn = () => {
+    window.open('https://linkedin.com/in/julian-tintarea-6b2327387', '_blank')
+  }
 </script>
 
 <template>
@@ -51,7 +63,7 @@
           aspect-square cursor-pointer
           hover:scale-110 transition-transform duration-200 ease-in-out
           text-(--text)"
-          @click="openModal"
+          @click="openGithub"
       />
 
       <DiscordLogo
@@ -71,7 +83,7 @@
           aspect-square cursor-pointer
           hover:scale-110 transition-transform duration-200 ease-in-out
           text-(--text)"
-          @click="openModal"
+          @click="openLeetCode"
       />
 
       <LinkedInLogo
@@ -81,7 +93,7 @@
           aspect-square cursor-pointer
           hover:scale-110 transition-transform duration-200 ease-in-out
           text-(--text)"
-          @click="openModal"
+          @click="openLinkedIn"
       />
 
       <MailLogo

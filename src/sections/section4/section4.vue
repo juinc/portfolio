@@ -1,92 +1,92 @@
 <script setup>
-import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
-import { useI18n } from 'vue-i18n';
+  import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
+  import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+  const { t } = useI18n();
 
-const socials = ref({
-  email: 'tintarea.iulian.work@gmail.com',
-  github: 'github.com/juinc',
-  linkedin: 'linkedin.com/in/julian-tintarea-6b2327387',
-  leetcode: 'leetcode.com/u/juinc/',
-  discord: '@juinc',
-  roblox: '@juinc'
-});
-
-const copiedStates = ref({
-  email: false,
-  discord: false,
-  github: false,
-  linkedin: false,
-  leetcode: false,
-  roblox: false
-});
-
-const copyToClipboard = async (platform) => {
-  try {
-    await navigator.clipboard.writeText(socials.value[platform]);
-    copiedStates.value[platform] = true;
-    setTimeout(() => {
-      copiedStates.value[platform] = false;
-    }, 2000);
-  } catch (err) {
-    console.error('Failed to copy text: ', err);
-  }
-};
-
-const eduRef = ref(null);
-const dpRef = ref(null);
-const socRef = ref(null);
-
-const inView = reactive({
-  edu: false,
-  dp: false,
-  soc: false
-});
-
-let observer;
-
-const setVh = () => {
-  const vh = window.innerHeight * 0.01
-  document.documentElement.style.setProperty('--vh', `${vh}px`)
-}
-
-onMounted(() => {
-  setVh()
-  window.addEventListener('resize', setVh)
-  window.addEventListener('orientationchange', setVh)
-  if (window.visualViewport) window.visualViewport.addEventListener('resize', setVh)
-})
-
-onMounted(() => {
-  observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          if (entry.target === eduRef.value) inView.edu = true;
-          if (entry.target === dpRef.value) inView.dp = true;
-          if (entry.target === socRef.value) inView.soc = true;
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        root: null,
-        threshold: 0.2,
-        rootMargin: '0px 0px -10% 0px'
-      }
-  );
-
-  [eduRef.value, dpRef.value, socRef.value].forEach((el) => {
-    if (el) observer.observe(el);
+  const socials = ref({
+    email: 'tintarea.iulian.work@gmail.com',
+    github: 'github.com/juinc',
+    linkedin: 'linkedin.com/in/julian-tintarea-6b2327387',
+    leetcode: 'leetcode.com/u/juinc/',
+    discord: '@juinc',
+    roblox: '@juinc'
   });
-});
 
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', setVh)
-  window.removeEventListener('orientationchange', setVh)
-  if (window.visualViewport) window.visualViewport.removeEventListener('resize', setVh)
-  observer?.disconnect();
-});
+  const copiedStates = ref({
+    email: false,
+    discord: false,
+    github: false,
+    linkedin: false,
+    leetcode: false,
+    roblox: false
+  });
+
+  const copyToClipboard = async (platform) => {
+    try {
+      await navigator.clipboard.writeText(socials.value[platform]);
+      copiedStates.value[platform] = true;
+      setTimeout(() => {
+        copiedStates.value[platform] = false;
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
+  const eduRef = ref(null);
+  const dpRef = ref(null);
+  const socRef = ref(null);
+
+  const inView = reactive({
+    edu: false,
+    dp: false,
+    soc: false
+  });
+
+  let observer;
+
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+  }
+
+  onMounted(() => {
+    setVh()
+    window.addEventListener('resize', setVh)
+    window.addEventListener('orientationchange', setVh)
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', setVh)
+  })
+
+  onMounted(() => {
+    observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            if (entry.target === eduRef.value) inView.edu = true;
+            if (entry.target === dpRef.value) inView.dp = true;
+            if (entry.target === socRef.value) inView.soc = true;
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          root: null,
+          threshold: 0.2,
+          rootMargin: '0px 0px -10% 0px'
+        }
+    );
+
+    [eduRef.value, dpRef.value, socRef.value].forEach((el) => {
+      if (el) observer.observe(el);
+    });
+  });
+
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', setVh)
+    window.removeEventListener('orientationchange', setVh)
+    if (window.visualViewport) window.visualViewport.removeEventListener('resize', setVh)
+    observer?.disconnect();
+  });
 </script>
 
 <template>
@@ -165,7 +165,7 @@ onBeforeUnmount(() => {
                    max-h-none lg:max-h-none"
           >
             <div
-                v-for="i in 4"
+                v-for="i in 5"
                 :key="i"
                 class="px-2 py-2 xs:px-3 xs:py-2.5 sm:px-4 sm:py-3 md:py-4
                      bg-[linear-gradient(to_bottom,_color-mix(in_oklch,_var(--bg-light)_25%,_transparent),_color-mix(in_oklch,_var(--bg)_15%,_transparent))]

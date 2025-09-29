@@ -1,28 +1,36 @@
 <script setup>
-import { ref } from 'vue'
-import Background from '@/shared/background/background.vue';
+  import { ref, onMounted } from 'vue'
+  import Background from '@/shared/background/background.vue';
 
-import Section1 from '@/sections/section1/section1.vue';
-import Section2 from '@/sections/section2/section2.vue';
-import Section3 from "@/sections/section3/section3.vue";
-import Section4 from "@/sections/section4/section4.vue";
+  import Section1 from '@/sections/section1/section1.vue';
+  import Section2 from '@/sections/section2/section2.vue';
+  import Section3 from "@/sections/section3/section3.vue";
+  import Section4 from "@/sections/section4/section4.vue";
 
-import IconsBar from '@/topbar/socials/iconsBar.vue';
-import Settings from '@/topbar/settings.vue';
-import ScrollBar from '@/shared/scrollBar.vue';
+  import IconsBar from '@/topbar/socials/iconsBar.vue';
+  import Settings from '@/topbar/settings.vue';
+  import ScrollBar from '@/shared/scrollBar.vue';
 
-import LoadingBar from '@/shared/loadingAnim.vue';
+  import LoadingBar from '@/shared/loadingAnim.vue';
 
-const backgroundRef = ref(null)
+  const backgroundRef = ref(null)
 
-function loadingEnded(){
-  const centerX = window.innerWidth / 2
-  const centerY = window.innerHeight / 2
+  function loadingEnded(){
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
 
-  if (backgroundRef.value) {
-    backgroundRef.value.createRipple(centerX, centerY, 4)
+    if (backgroundRef.value) {
+      backgroundRef.value.createRipple(centerX, centerY, 4)
+    }
   }
-}
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  onMounted(() => {
+    window.scrollTo(0, 0);
+  });
 </script>
 
 <template>

@@ -106,6 +106,7 @@
           <div class="flex-1 flex items-center justify-center">
             <div class="w-20 h-20 min-[300px]:w-24 min-[300px]:h-24 min-[400px]:w-28 min-[400px]:h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-44 lg:h-44 xl:w-48 xl:h-48 2xl:w-56 2xl:h-56 relative">
               <img
+                  rel="preload"
                   :src="currentProfile.image"
                   :class="[
                   'w-full h-full rounded-full object-cover cursor-pointer',

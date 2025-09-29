@@ -26,24 +26,28 @@
   const selectedLanguage = ref(null)
   const isDownloading = ref(false)
 
+  import cvEn from '@/assets/pdf/cv-eng.pdf'
+  import cvRo from '@/assets/pdf/cv-ro.pdf'
+  import cvEs from '@/assets/pdf/cv-es.pdf'
+
   const languages = [
     {
       code: 'en',
       name: 'English',
       flag: 'GB',
-      cvUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+      cvUrl: cvEn
     },
     {
       code: 'ro',
       name: 'Română',
       flag: 'RO',
-      cvUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+      cvUrl: cvRo
     },
     {
       code: 'es',
       name: 'Español',
       flag: 'ES',
-      cvUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+      cvUrl: cvEs
     },
   ]
 
