@@ -105,7 +105,7 @@
         prt3
       ],
       technologies: ['Vue.js', 'TailwindCSS', 'i18n', 'Github Pages', 'Swiper.js'],
-      socials: [{ name: 'GitHub', url: 'https://juinc.github.io/portfolio/' }]
+      socials: [{ name: 'GitHub', url: 'https://github.com/juinc/portfolio' }]
     }
   ])
 
