@@ -8,7 +8,8 @@
 
 
 Welcome to the repository for my **portfolio**. Built in Vue.js and TailwindCSS, it also uses a few more libraries such as i18n for translation, three.js for the background effects and more.
-![Live Portfolio](https://juinc.github.io/portfolio)
+
+[Live Portfolio](https://juinc.github.io/portfolio)
 
 ## 🚀 Features
 
