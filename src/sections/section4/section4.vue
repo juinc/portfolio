@@ -165,7 +165,7 @@
                    max-h-none lg:max-h-none"
           >
             <div
-                v-for="i in 5"
+                v-for="i in 6"
                 :key="i"
                 class="px-2 py-2 xs:px-3 xs:py-2.5 sm:px-4 sm:py-3 md:py-4
                      bg-[linear-gradient(to_bottom,_color-mix(in_oklch,_var(--bg-light)_25%,_transparent),_color-mix(in_oklch,_var(--bg)_15%,_transparent))]
@@ -179,12 +179,12 @@
                         text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl 2xl:text-2xl
                         text-(--text-muted) font-bold leading-tight"
                  style="font-weight: bold;">
-                {{ t(`section-4-dp-${i}-title`) }}
+                {{ t(`section-4-dp-${i-1}-title`) }}
               </p>
               <p class="font-bg-rubik
                         text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-md 2xl:text-md
                         leading-tight xs:leading-normal">
-                {{ t(`section-4-dp-${i}-desc`) }}
+                {{ t(`section-4-dp-${i-1}-desc`) }}
               </p>
             </div>
           </div>
