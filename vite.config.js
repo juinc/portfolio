@@ -12,7 +12,7 @@ export default defineConfig({
     base: '/portfolio/',
   plugins: [
     vue(),
-    vueDevTools(),
+    //vueDevTools(),
     tailwindcss(),
       svgLoader()
   ],
